@@ -22,10 +22,15 @@ SONGS_PATH.mkdir(parents=True, exist_ok=True)
 INDEX_PATH.mkdir(parents=True, exist_ok=True)
 
 persist_random_collection(SONGS_PATH, 1000)
+print("Collection persisted")
 persist_index(SONGS_PATH, INDEX_PATH)
+print("Index is created")
 dictionary = make_dict(SONGS_PATH)
+print("Dictionary is created")
 WILDCARD_TREE = WildCardTree(dictionary)
+print("WildCardTree is created")
 SOUNDEX_TREE = SoundexTree(dictionary)
+print("SoundexTree is created")
 AUX_INDEX = InvertedIndex()
 
 

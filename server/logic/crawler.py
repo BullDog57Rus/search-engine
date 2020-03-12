@@ -20,6 +20,8 @@ def persist_random_collection(dir_path: Path, n: int = 100):
             continue
         urls.add(song.url)
         counter += 1
+        if counter % 50 == 0:
+            print(f"Number of crawled songs: {counter}")
 
 
 def persist_song(url: str, dir_path: Path):

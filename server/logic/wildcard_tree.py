@@ -7,11 +7,16 @@ class WildCardTree:
     asterisk = "*"
 
     def __init__(self, collection: Set[str]):
+        counter = 0
+        length = len(collection)
         self.root = {}
         for token in collection:
             token = token + self.terminal
             for permuted_token in self._cyclic_permute(token):
                 self._add(permuted_token + self.terminal)
+            counter += 1
+            if counter % (length * 0.1) == 0:
+                print(f"WildCard {counter}/{length}")
 
     @classmethod
     def from_dict(cls, tree: Dict[str, Dict]) -> "WildCardTree":

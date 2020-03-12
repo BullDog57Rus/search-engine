@@ -34,9 +34,13 @@ class InvertedIndex:
 
 
 def persist_index(song_dir_path: Path, index_dir_path: Path):
+    counter = 0
     for song_path in song_dir_path.iterdir():
         song = Song.from_file(song_path.name, song_dir_path)
         add_song_to_index(index_dir_path, song)
+        counter += 1
+        if counter % 50 == 0:
+            print(f"Number of indexed songs: {counter}")
 
 
 def add_song_to_index(index_dir_path: Path, song: Song):
